@@ -6,6 +6,7 @@ verify_ssl = true
 [packages]
 django = "*"
 validate-email = "*"
+coverage = "*"
 
 [requires]
 python_version = "3.7"
