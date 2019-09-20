@@ -125,9 +125,6 @@ class LoginView(View):
         login(request,user)
         return redirect('home')
 
-
-        return render(request,'auth/login.html')
-
         
         
 
