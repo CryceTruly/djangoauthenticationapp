@@ -7,6 +7,7 @@ verify_ssl = true
 django = "*"
 validate-email = "*"
 coverage = "*"
+codecov = "*"
 
 [requires]
 python_version = "3.7"
