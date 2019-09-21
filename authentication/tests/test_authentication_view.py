@@ -1,6 +1,10 @@
 from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth.models import User
+from django.utils.encoding import force_bytes,force_text,DjangoUnicodeDecodeError
+from django.utils.http import urlsafe_base64_encode,urlsafe_base64_decode
+from authentication.utils import generate_token
+
 
 class BaseTest(TestCase):
     def setUp(self):
@@ -88,6 +92,22 @@ class LoginTest(BaseTest):
     def test_cantlogin_with_no_password(self):
         response= self.client.post(self.login_url,{'username':'passwped','password':''},format='text/html')
         self.assertEqual(response.status_code,401)
+
+class UserVerifyTest(BaseTest):
+    def test_user_ctivates_success(self):
+        user=User.objects.create_user('testuser','crytest@gmail.com')
+        user.set_password('tetetebvghhhhj')
+        user.is_active=False
+        user.save()
+
+        uid=urlsafe_base64_encode(force_bytes(user.pk))
+        token=generate_token.make_token(user)
+        response=self.client.get(reverse('activate',kwargs={'uidb64':uid,'token':token}))
+        self.assertEqual(response.status_code,302)
+        user=User.objects.get(email='crytest@gmail.com')
+        self.assertTrue(user.is_active)
+
+
 
        
 
