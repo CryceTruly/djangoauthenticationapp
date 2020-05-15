@@ -1,0 +1,79 @@
+{% extends 'base.html'%}
+{% load static %}
+
+
+
+{% block content%}
+
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+
+        <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-8">
+                    <div class="card mt-5">
+                            <img src="{% static 'img/instagram-wordmark.svg' %}" class="card-img-top app-card-img" alt="...">
+                            <div class="card-body">
+                            <h6 class="tetx-mute">Please provide your Email address,we shall send you instructions to reset your password </h6>
+
+{% include 'partials/_flash_messages.html'%}
+                           <form action="{%url 'request_reset_email'%}" method="POST">
+                               {% csrf_token%}
+
+
+<div class="form-group">
+        <input class="form-control form-control-sm" type="text" name="email" value="{{data.email}}" placeholder="Email">
+    </div>
+
+    <input type="submit" class="btn btn-sm btn-block btn-primary" value="Send Email">
+
+                           </form>
+
+
+
+
+
+
+                            </div>
+                          </div>
+
+
+<div class="card card-small mt-4">
+    <div class="card-body lower-card">
+        <p>
+           Need an account? <a href="{% url 'register' %}">Register</a>
+        </p>
+
+    </div>
+
+</div>
+<div class="card mt-1">
+
+  <div class="card-body">
+        <p>
+            Remember password?<a href="{%url 'login'%}">Login</a>
+        </p>
+    </div>
+
+    </div>
+
+
+
+
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+
+
+
+
+
+
+    </div>
+    <div class="col-md-3"></div>
+</div>
+
+
+{% endblock %}

@@ -8,6 +8,10 @@ django = "*"
 validate-email = "*"
 coverage = "*"
 codecov = "*"
+six = "*"
 
 [requires]
 python_version = "3.7"
+
+[dev-packages]
+autopep8 = "*"
