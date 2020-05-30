@@ -18,29 +18,29 @@
                     <div class="card mt-5">
                             <img src="https://mta-instagram-clone.herokuapp.com/static/img/instagram-wordmark.svg" class="card-img-top" alt="...">
                             <div class="card-body">
-                              
+
 {% include 'partials/_flash_messages.html'%}
                            <form action="{%url 'login'%}" method="POST">
                                {% csrf_token%}
-                              
+
 
 <div class="form-group">
         <input class="form-control form-control-sm" type="text" name="username" value="{{data.username}}" placeholder="Username">
-    
-        
+
+
     </div>
 
 <div class="form-group">
         <input class="form-control form-control-sm" type="password" name="password" placeholder="Password">
-    
-        
+
+
     </div>
- 
+
     <input type="submit" class="btn btn-sm btn-block btn-primary" value="Login">
-                            
+
                            </form>
 
-                            
+
                             <div class="row">
                                 <div class="col-md-5">
                                     <hr>
@@ -54,11 +54,11 @@
                             </div>
 
                             <a href="" class="btn btn-sm btn-block btn-primary"><i class="fa fa-facebook"></i> Login with Facebook</a>
-                          
-                            
-                            
-                            
-                            
+
+
+
+
+
                             </div>
                           </div>
 
@@ -71,6 +71,14 @@
     </div>
 </div>
 
+
+<div class="card mt-4">
+    <div class="card-body">
+        <p>
+           Forgot Password? <a href="{% url 'request-reset-email' %}">Reset it here</a>
+        </p>
+    </div>
+</div>
 
 
 

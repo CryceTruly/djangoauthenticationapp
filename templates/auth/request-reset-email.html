@@ -1,0 +1,61 @@
+{% extends 'base.html'%}
+{% load static %}
+
+
+
+{% block content%}
+
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+
+        <div class="row">
+            <div class="col-md-2">
+
+
+            </div>
+            <div class="col-md-8">
+                    <div class="card mt-5">
+                            <img src="https://mta-instagram-clone.herokuapp.com/static/img/instagram-wordmark.svg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <h5 class="card-title text-muted">Provide your email to recieve reset instructions</h5>
+
+                            {% include 'partials/_flash_messages.html'%}
+
+                            <form action="{% url 'request-reset-email' %}" method="post">
+
+                                {% csrf_token %}
+
+                        <div class="form-group">
+                            <input class="form-control form-control-sm" type="email" name="email" value="{{data.email}}" placeholder="Email">
+                        </div>
+                        <input type="submit" value="Submit" class="btn btn-sm btn-block btn-primary"/>
+                                    </form>
+
+                                    </div>
+                                </div>
+
+
+<div class="card mt-4">
+    <div class="card-body">
+        <p>
+            Already have an account?<a href="{%url 'login'%}">Login</a>
+             Dont have an account?<a href="{%url 'register'%}">Login</a>
+        </p>
+    </div>
+</div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+
+
+
+
+
+
+    </div>
+    <div class="col-md-3"></div>
+</div>
+
+
+{% endblock %}
